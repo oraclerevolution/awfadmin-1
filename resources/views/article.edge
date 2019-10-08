@@ -1,0 +1,313 @@
+@layout('Layouts.main')
+@section('contenu')
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <title>AdminBite admin Template - The Ultimate Multipurpose admin template</title>
+    <!-- This Page CSS -->
+    <link rel="stylesheet" type="text/css" href="../../assets/libs/summernote/dist/summernote-bs4.css">
+    <!-- Custom CSS -->
+    <link href="../../dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+   
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+     
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+                
+              
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+       
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+           
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                
+                                <div class="form-row">
+                                    <div class="form-group col-md-9">
+                                        <label for="name">Ajouter le titre</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Ecrivez ici">
+                                    </div>
+                                </div>
+                                <div class="summernote">
+                                    <h4>Default Summernote</h4>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="email-repeater form-group">
+                    <div data-repeater-list="repeater-group">
+                        <div data-repeater-item class="row m-b-15">
+                            <div class="col-md-10">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choisir un fichier</label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success waves-effect waves-light" type="submit">Publier
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- title -->
+                            <div class="d-md-flex align-items-center">
+                                <div>
+                                    <h4 class="card-title">Liste des articles</h4>
+                                </div>
+                                <div class="ml-auto">
+                                    <div class="dl">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- title -->
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table v-middle">
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th class="border-top-0">Titre</th>
+                                        <th class="border-top-0">Date d'ajout</th>
+                                        <th class="border-top-0" width="500">Actions</th>
+                                       <!--  <th class="border-top-0">Technology</th> -->
+                                        <!-- <th class="border-top-0">Tickets</th> -->
+                                       <!--  <th class="border-top-0">Sales</th> -->
+                                        <!-- <th class="border-top-0">Earnings</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-danger text-white">EA</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Elite Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>John Doe</td> -->
+                                        <td>
+                                            <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-info text-white">MA</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Monster Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>Venessa Fern</td> -->
+                                        <td>
+                                             <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-success text-white">MP</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Material Pro Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>John Doe</td> -->
+                                        <td>
+                                            <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-purple text-white">AA</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Ample Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>John Doe</td> -->
+                                        <td>
+                                            <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+           
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+   
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <script src="../../dist/js/app.min.js"></script>
+    <script src="../../dist/js/app.init.dark.js"></script>
+    <script src="../../dist/js/app-style-switcher.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="../../dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+   
+    <!-- This Page JS -->
+    <script src="../../assets/libs/summernote/dist/summernote-bs4.min.js"></script>
+    <script>
+    /************************************/
+    //default editor
+    /************************************/
+    $('.summernote').summernote({
+        height: 350, // set editor height
+        minHeight: null, // set minimum height of editor
+        maxHeight: null, // set maximum height of editor
+        focus: false // set focus to editable area after initializing summernote
+    });
+
+    /************************************/
+    //inline-editor
+    /************************************/
+    $('.inline-editor').summernote({
+        airMode: true
+    });
+
+    /************************************/
+    //edit and save mode
+    /************************************/
+    window.edit = function() {
+            $(".click2edit").summernote()
+        },
+        window.save = function() {
+            $(".click2edit").summernote('destroy');
+        }
+
+    var edit = function() {
+        $('.click2edit').summernote({ focus: true });
+    };
+
+    var save = function() {
+        var markup = $('.click2edit').summernote('code');
+        $('.click2edit').summernote('destroy');
+    };
+
+    /************************************/
+    //airmode editor
+    /************************************/
+    $('.airmode-summer').summernote({
+        airMode: true
+    });
+    </script>
+
+
+
+@endsection

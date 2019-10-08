@@ -1,0 +1,165 @@
+@layout('Layouts.main')
+@section('contenu')
+<div class="container-fluid">
+        <div class="row">
+           
+        </div>
+        <div class="row">
+            
+            <div class="col-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Remplissez les champs ci-dessous</h4>
+                    <form class="m-t-20" action="{{route('speaker.store')}}" method="POST" enctype="multipart/form-data"> 
+                        {{ csrfField() }}
+                            <div class="">
+                                <div class="form-group">
+                                    <label for="name">Nom du speaker</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Nom du speaker">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fonction">Sa fonction</label>
+                                    <input type="email" class="form-control" id="fonction" placeholder="fonction">
+                                </div>
+                                <div class="email-repeater form-group">
+                                    <div data-repeater-list="repeater-group">
+                                        <div data-repeater-item class="row m-b-15">
+                                            <div class="col-md-10">
+                                                <div class="custom-file">
+                                                    <input name="image" type="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile" >Choisir une image de speaker</label>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="msg">Sa biographie</label>
+                                    <textarea class="form-control" id="msg" rows="3" placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success waves-effect waves-light" type="submit">Ajouter un speaker
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- title -->
+                            <div class="d-md-flex align-items-center">
+                                <div>
+                                    <h4 class="card-title">Speakers AWF</h4>
+                                </div>
+                                <div class="ml-auto">
+                                    <div class="dl">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- title -->
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table v-middle">
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th class="border-top-0">Nom</th>
+                                        <th class="border-top-0">fonction</th>
+                                        <th class="border-top-0" width="500">Actions</th>
+                                       <!--  <th class="border-top-0">Technology</th> -->
+                                        <!-- <th class="border-top-0">Tickets</th> -->
+                                       <!--  <th class="border-top-0">Sales</th> -->
+                                        <!-- <th class="border-top-0">Earnings</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-danger text-white">EA</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Elite Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>John Doe</td> -->
+                                        <td>
+                                            <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-info text-white">MA</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Monster Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>Venessa Fern</td> -->
+                                        <td>
+                                             <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-success text-white">MP</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Material Pro Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>John Doe</td> -->
+                                        <td>
+                                            <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="m-r-10">
+                                                    <a class="btn btn-circle btn-purple text-white">AA</a>
+                                                </div>
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">Ample Admin</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Single Use</td>
+                                        <!-- <td>John Doe</td> -->
+                                        <td>
+                                            <button type="button" class="btn btn-primary">modifier</button>
+                                            <button type="button" class="btn btn-danger">supprimer</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+@endsection

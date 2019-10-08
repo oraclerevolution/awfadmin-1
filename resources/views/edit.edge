@@ -1,0 +1,25 @@
+@layout('Layouts.main')
+
+@section('contenu')
+
+    <div class="content">
+        <!-- Remove This Before You Start -->
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Modifier la Thematique</h2>
+                <form action="{{ route('ThematiqueController.update', { id : thematique.id} ) }}" method="POST">
+                    {{ csrfField() }}
+                    <div class="form-group">
+                        <label for="name">Nom de la thematique</label>
+                        <textarea class="form-control" name="name" placeholder="Ecrivez ici" cols="30" rows="10">{{ thematique.name }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                    </div>
+                </form>
+                <a href="{{ route('ThematiqueController.thematique') }}">Retour</a>
+            </div>
+        </div>
+    </div> 
+
+@endsection

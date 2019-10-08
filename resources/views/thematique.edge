@@ -1,0 +1,93 @@
+@layout('Layouts.main')
+
+@section('contenu')
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Remplissez le champ ci dessous</h4>
+                        <div class="repeater-default m-t-30">
+                            <div data-repeater-list="">
+                                <div data-repeater-item="">
+                                <form action="{{ route('ThematiqueController.store') }}" method="POST">
+                                    {{ csrfField() }}
+                                        <div class="form-row">
+                                            <div class="form-group col-md-9">
+                                                <label for="name">Nom de la thematique</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Ecrivez ici" name="name">
+                                            </div>
+                                        </div>
+                                        <button data-repeater-create="" type="submit" class="btn btn-info waves-effect waves-light">Ajouter une thematique</button>
+                                    </form>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- title -->
+                            <div class="d-md-flex align-items-center">
+                                <div>
+                                    <h4 class="card-title">Thematiques AWF</h4>
+                                </div>
+                                <div class="ml-auto">
+                                    <div class="dl">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- title -->
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table v-middle">
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th class="border-top-0">Titre</th>
+                                        <th class="border-top-0">Date d'ajout</th>
+                                        <th class="border-top-0" width="500">Actions</th>
+                                       <!--  <th class="border-top-0">Technology</th> -->
+                                        <!-- <th class="border-top-0">Tickets</th> -->
+                                       <!--  <th class="border-top-0">Sales</th> -->
+                                        <!-- <th class="border-top-0">Earnings</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @each(thematique in thematiques)
+                                    <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10">
+                                                        <a class="btn btn-circle btn-danger text-white">EA</a>
+                                                    </div>
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16">{{thematique.name}}</h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!--<td>Single Use</td>-->
+                                             <td>{{thematique.created_at}}</td>
+                                            <td>
+                                              <button type="button" class="btn btn-primary"><a href=" {{ route('ThematiqueController.edit', { id: thematique.id }) }} ">modifier</a></button> 
+                                              <button type="button" class="btn btn-danger"><a href="{{ route('ThematiqueController.delete', { id: thematique.id }) }}">supprimer</a></button>
+                                            </td>
+                                        </tr> 
+                                    @endeach
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+@endsection
