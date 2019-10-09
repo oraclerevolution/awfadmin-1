@@ -19,9 +19,8 @@ const Route = use('Route')
 //Route.get('login', 'Auth/LoginController.login').as('login')
 
 Route.get('home', 'TestController.home').as('home')
-
 Route.get('article', 'ActualiteController.ShowActualite')
-
+Route.get('/allreseaux', 'ReseauController.showForm')
 //Route.get('thematique', 'ThematiqueController.ShowThematique').as('thematique')
 //Route.post('/thematique', 'ThematiqueController.create')
 
