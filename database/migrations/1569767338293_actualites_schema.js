@@ -8,8 +8,8 @@ class ActualitesSchema extends Schema {
     this.create('actualites', (table) => {
       table.increments()
       table.string('title', 70).notNullable()
-      table.text('article', 24).notNullable()
-      table.string('photo', 2000).notNullable()
+      table.text('article', 2000).notNullable()
+      table.string('photo', 74).notNullable()
       table.timestamps()
     })
   }

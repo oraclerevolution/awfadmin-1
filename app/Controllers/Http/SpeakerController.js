@@ -1,50 +1,58 @@
 'use strict'
-const Speaker = use('App/Models/Speaker')
-const Helpers = use('Helpers')
-const uuid = require('uuid/v4')
 
+
+const Speaker = use('App/Models/Speaker');
 class SpeakerController {
-   async ShowSpeakers ({ view }){
-        const speakers = await Speaker.pair('id', 'name')
-
-        return view.render('speakers', { speakers})
+     async index({view, request, response}) {
+        const speakers = await Speaker.all();
+          
+        //Fetch all user's thematiques
+        return view.render('speakers', { speakers: speakers.rows})
     }
-   
-    async store ({request, response,auth ,session}){
-        const user = auth.user 
+    create({request, response, view}) {
+        return view.render('speakers')
+    }
 
-        const image = request.file('image', {
-            types: ['image'],
-            size: '2mb'
-        })
+    async store({request, response, view, session}) {
+        const speakers = new Speaker();
+        //const posted = await auth.user.thematiques().create({
+            //name: thematique.name,            
+        //});
 
-        await image.move(Helpers.publicPath('uploads/images'), {
-            name: `${uuid()}.${image.subtype}`
-        })
-        
-        if (!image.moved()){
-            session.flash({ 
-                notification: {
-                    type: danger,
-                    message: image.error().message
-                }
-             })
-             return response.redirect('back')
-        }
-        const speaker = new Speaker()
+        speakers.name = request.input('nom');
+        speakers.fonction = request.input('fonction');
+        speakers.photo = request.input('photo');
+        await speakers.save();
+        //return response.json(speaker);
 
-        speaker.name = request.input('name')
-        speaker.fonction = request.input('fonction')
-        speaker.image = `uploads/images${image.fileName}`
-        await user.speakers().save(speaker)
+        session.flash({ notification: 'Successfully create!' });
+        return response.route('speakers')
+    }
 
-        session.flash({ notification: {
-            type: 'sucess',
-            message: 'podcast created'
-        }
-     })
+    async edit({request, response, view, params}) {
+        const id = params.id;
+        const speaker = await Speaker.find(id);
 
-     return response.route('speakers')
+        return view.render('edit', {speaker : speaker})
+    }
+
+    async update({request, response, view, params, session}) {
+        const id = params.id;
+        const thematique = await Thematique.find(id);
+        thematique.name = request.input('name'),
+        await thematique.save();
+
+        session.flash({ notification: 'Successfully update!' });
+        response.redirect('/speakers')
+    }
+
+    async delete({request, response, view, params, session}) {
+        const id = params.id;
+        const thematique = await Thematique.find(id);
+        await thematique.delete();
+
+        session.flash({ notification: 'Successfully delete!' });
+        response.redirect('/speakers')
     }
 }
 

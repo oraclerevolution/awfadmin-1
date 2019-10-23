@@ -1,10 +1,11 @@
 'use strict'
 
 const Actualite = use('App/Models/Actualite');
+const Helpers = use('Helpers')
 class ActualiteController {
 
     //ShowActualite({view}){
-        //return view.render('article')
+      //  return view.render('article')
     //}
 
     async index({view, request, response}) {
@@ -15,34 +16,48 @@ class ActualiteController {
     }
 
     create({request, response, view}) {
-        return view.render('actualite')
+        return view.render('Actualite.article')
     }
 
     async store({request, response, view, session}) {
-        const actualite = new Actualite();
-        //const posted = await auth.user.thematiques().create({
-            //name: thematique.name,            
-        //});
 
-        actualite.name = request.input('name');
+        const photo = request.file('photo', {
+            types: ['image'],
+            size: '2mb'
+          })
+
+          if (!photo.moved()) {
+            return photo.error()
+          }
+
+          await photo.move(Helpers.tmpPath('uploads/photo'), {
+            name:`${uuid()}.${logo.subtype}` ,
+            overwrite: true
+          })
+        
+        const actualite = new Actualite();
+        
+        actualite.title = request.input('title');
+        actualite.article = request.input('article');
+        actualite.photo = 'uploads/photo/${logo.filename}';
         await actualite.save();
-        //return response.json(thematique);
+       
 
         session.flash({ notification: 'Successfully create!' });
-        return response.route('Actualite.actualite')
+        return response.route('Actualite.article')
     }
 
     async edit({request, response, view, params}) {
         const id = params.id;
         const actualite = await Actualite.find(id);
 
-        return view.render('edit', {actualite : Actualite})
+        return view.render('edits', {actualite : Actualite})
     }
 
     async update({request, response, view, params, session}) {
         const id = params.id;
         const actualite = await Actualite.find(id);
-        actualite.name = request.input('name'),
+        actualite.name = request.input('title'),
         await actualite.save();
 
         session.flash({ notification: 'Successfully update!' });

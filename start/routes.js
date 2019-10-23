@@ -19,12 +19,12 @@ const Route = use('Route')
 //Route.get('login', 'Auth/LoginController.login').as('login')
 
 Route.get('home', 'TestController.home').as('home')
-Route.get('article', 'ActualiteController.ShowActualite')
+//Route.get('article', 'ActualiteController.ShowActualite')
 Route.get('/allreseaux', 'ReseauController.showForm')
 //Route.get('thematique', 'ThematiqueController.ShowThematique').as('thematique')
 //Route.post('/thematique', 'ThematiqueController.create')
 
-Route.get('speakers', 'SpeakerController.ShowSpeakers')
+//Route.get('speakers', 'SpeakerController.ShowSpeakers')
 
 Route.post('logout', 'Auth/LogoutController.logout').as('logout')
 
@@ -54,3 +54,21 @@ Route.get('/delete/:id', 'ThematiqueController.delete').as('Thematique.delete')
 Route.post('/store', 'ThematiqueController.store').as('Thematique.store')
 //Route.post('/update/:id', 'ThematiqueController.update').as('Thematique.update')
 Route.post('/update/:id', 'ThematiqueController.update').as('Thematique.update')
+
+//ajout article
+Route.get('/article', 'ActualiteController.index').as('Actualite.index')
+Route.get('/article', 'ActualiteController.article').as('Actualite.article')
+Route.post('/article', 'ActualiteController.create')
+Route.get('/edits/:id', 'ActualiteController.edit').as('Actualite.edit')
+Route.get('/deletes/:id', 'ActualiteController.delete').as('Actualite.delete')
+Route.post('/stores', 'ActualiteController.store').as('Actualite.store')
+Route.post('/updates/:id', 'ActualiteController.update').as('Actualite.update')
+
+//ajout speaker
+Route.get('/speakers', 'SpeakerController.index').as('Actualite.index')
+Route.get('/speakers', 'SpeakerController.speakers').as('Speaker.speaker')
+Route.post('/speaker', 'SpeakerController.create')
+Route.get('/editss/:id', 'SpeakerController.edit').as('Actualite.edit')
+Route.get('/deletess/:id', 'SpeakerControllre.delete').as('Actualite.delete')
+Route.post('/stores', 'SpeakerController.store').as('Speaker.store')
+Route.post('/updatess/:id', 'SpeakerController.update').as('Actualite.update')

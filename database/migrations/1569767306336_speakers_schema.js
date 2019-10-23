@@ -9,7 +9,7 @@ class SpeakersSchema extends Schema {
       table.increments()
       table.string('name', 20).notNullable()
       table.string('fonction', 200).notNullable()
-      table.string('photo', 150).notNullable()
+      table.string('photo', 200).notNullable()
       table.timestamps()
     })
   }
