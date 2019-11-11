@@ -62,7 +62,7 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-              <form action="{{ route('Actualite.store') }}" method="POST">
+              <form action="{{ route('Actualite.store') }}" method="POST" enctype="multipart/form-data" >
             {{ csrfField() }}
             <div class="row">
                 <div class="col-12">

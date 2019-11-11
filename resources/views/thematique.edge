@@ -74,7 +74,7 @@
                                             <!--<td>Single Use</td>-->
                                              <td>{{thematique.created_at}}</td>
                                             <td>
-                                              <a href=" {{ route('ThematiqueController.edit', { id: thematique.id }) }} "><button type="button" class="btn btn-primary">modifier</button></a> 
+                                              <a href="{{ route('ThematiqueController.edit', { id: thematique.id }) }} "><button type="button" class="btn btn-primary">modifier</button></a> 
                                               <a href="{{ route('ThematiqueController.delete', { id: thematique.id }) }}"><button type="button" class="btn btn-danger">supprimer</button></a>
                                             </td>
                                         </tr> 

@@ -1,25 +1,33 @@
+
 @layout('Layouts.main')
-
 @section('contenu')
-
-    <div class="content">
-        <!-- Remove This Before You Start -->
+<div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <h2>Modifier la Thematique</h2>
-                <form action="{{ route('ThematiqueController.update', { id : thematique.id} ) }}" method="POST">
-                    {{ csrfField() }}
-                    <div class="form-group">
-                        <label for="name">Nom de la thematique</label>
-                        <textarea class="form-control" name="name" placeholder="Ecrivez ici" cols="30" rows="10">{{ thematique.name }}</textarea>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Remplissez le champ ci dessous</h4>
+                        <div class="repeater-default m-t-30">
+                            <div data-repeater-list="">
+                                <div data-repeater-item="">
+                                <form action="{{ route('ThematiqueController.update', { id : thematique.id} ) }}" method="POST">
+                                    {{ csrfField() }}
+                                        <div class="form-row">
+                                            <div class="form-group col-md-9">
+                                                <label for="name">Nom de la thematique</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Ecrivez ici" name="name">
+                                            </div>
+                                        </div>
+                                        <button data-repeater-create="" type="submit" class="btn btn-info waves-effect waves-light">Envoyer</button>
+                                    </form>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-sm btn-success">Submit</button>
-                    </div>
-                </form>
-                <a href="{{ route('ThematiqueController.thematique') }}">Retour</a>
+                </div>
             </div>
         </div>
-    </div> 
-
+       
+    </div>
 @endsection

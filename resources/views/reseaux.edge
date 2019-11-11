@@ -6,26 +6,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <!-- This Page CSS -->
-    <link rel="stylesheet" type="text/css" href="../../assets/libs/summernote/dist/summernote-bs4.css">
-    <!-- Custom CSS -->
-    <link href="../../dist/css/style.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
 
 <body>
     <!-- ============================================================== -->
@@ -67,25 +47,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                        @each(reseau in reseaus)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="m-r-10">
-                                                    <a class="btn btn-circle btn-danger text-white">EA</a>
-                                                </div>
                                                 <div class="">
-                                                    <h4 class="m-b-0 font-16">Kouadio geoffroy</h4>
+                                                    <h4 class="m-b-0 font-16">{{reseau.nom}}</h4>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>assia.ngoranemail.com</td>
-                                        <td>Participation a awf2019</td>
-                                        <td>café B2B</td>
-                                        <td>28-03-2019</td>
+                                        <td>{{reseau.email}}</td>
+                                        <td>{{reseau.sujet}}</td>
+                                        <td>{{reseau.type_reseautage}}</td>
+                                        <td>{{reseau.created_at}}</td>
                                         <td>
-                                            <button type="button" class="btn btn-success">Détails</button>
+                                            <button type="button" class="btn btn-success">Repondre</button>
                                         </td>
                                     </tr>
+                                    @endeach
                                 </tbody>
                             </table>
                         </div>

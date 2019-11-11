@@ -10,6 +10,7 @@ class SpeakersSchema extends Schema {
       table.string('name', 20).notNullable()
       table.string('fonction', 200).notNullable()
       table.string('photo', 200).notNullable()
+      table.text('biographie', 200).notNullable()
       table.timestamps()
     })
   }

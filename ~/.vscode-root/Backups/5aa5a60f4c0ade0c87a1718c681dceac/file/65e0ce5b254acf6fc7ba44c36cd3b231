@@ -1,0 +1,26 @@
+file:///home/oracleducode/Bureau/my-new-project1/src/app/app.module.ts {"mtime":1573420218686,"size":567,"etag":"3465e34epi9","orphaned":false}
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+i
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+    
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Remplissez les champs ci-dessous</h4>
-                    <form class="m-t-20" action="{{route('SpeakerController.store')}}" method="POST" enctype="multipart/form-data"> 
+                        <form class="m-t-20" action="{{ route('SpeakerController.store') }}" method="POST" enctype="multipart/form-data">
                         {{ csrfField() }}
                             <div class="">
                                 <div class="form-group">
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="msg">Sa biographie</label>
-                                    <textarea class="form-control" id="msg" rows="3" placeholder="Message"></textarea>
+                                    <textarea class="form-control" id="msg" rows="3" placeholder="Message" name="msg"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-success waves-effect waves-light" type="submit">Ajouter un speaker
@@ -73,6 +73,7 @@
                                         <th class="border-top-0">Nom</th>
                                         <th class="border-top-0">fonction</th>
                                         <th class="border-top-0">photo</th>
+                                        <th class="border-top-0">biographie</th>
                                         <th class="border-top-0" width="500">Date d'ajout</th>
                                         <th class="border-top-0" width="500">Actions</th>
                                        <!--  <th class="border-top-0">Technology</th> -->
@@ -96,10 +97,11 @@
                                         </td>
                                         <td>{{speaker.fonction}}</td>
                                         <td>{{speaker.photo}}</td>
+                                        <td>{{speaker.biographie}}</td>
                                         <td>{{speaker.created_at}}</td> 
                                         <td>
-                                         <a href="{{ route('SpeakerController.edit', { id: speakers.id }) }}"> <button type="button" class="btn btn-primary">modifier</button></a>  
-                                          <a href="{{ route('SpeakerController.delete', { id: speakers.id }) }}"><button type="button" class="btn btn-danger">supprimer</button></a>  
+                                         <a href="{{ route('SpeakerController.edit', { id: speaker.id }) }}"> <button type="button" class="btn btn-primary">modifier</button></a>  
+                                          <a href="{{ route('SpeakerController.delete', {id: speaker.id }) }}"><button type="button" class="btn btn-danger">supprimer</button></a>  
                                         </td>
                                     </tr>
                                     @endeach

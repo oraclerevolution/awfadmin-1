@@ -45,6 +45,8 @@ Route.post('/thematique/update/:id', 'ThematiqueController.update')
 */
 
 //ajout thematique
+
+
 Route.get('/thematique', 'ThematiqueController.index').as('Thematique.index')
 Route.get('/thematique', 'ThematiqueController.thematique').as('Thematique.thematique')
 Route.post('/thematique', 'ThematiqueController.create')
@@ -65,10 +67,13 @@ Route.post('/stores', 'ActualiteController.store').as('Actualite.store')
 Route.post('/updates/:id', 'ActualiteController.update').as('Actualite.update')
 
 //ajout speaker
-Route.get('/speakers', 'SpeakerController.index').as('Actualite.index')
-Route.get('/speakers', 'SpeakerController.speakers').as('Speaker.speaker')
-Route.post('/speaker', 'SpeakerController.create')
-Route.get('/editss/:id', 'SpeakerController.edit').as('Actualite.edit')
-Route.get('/deletess/:id', 'SpeakerControllre.delete').as('Actualite.delete')
+Route.get('/speakers/: id', 'SpeakerController.index')
+Route.get('/speakers', 'SpeakerController.speaker').as('Speaker.speaker')
+Route.post('/speakers', 'SpeakerController.create')
+Route.get('/editss/:id', 'SpeakerController.edit').as('Speaker.edit')
+Route.get('/deletess/:id', 'SpeakerController.delete').as('Speaker.delete')
 Route.post('/stores', 'SpeakerController.store').as('Speaker.store')
-Route.post('/updatess/:id', 'SpeakerController.update').as('Actualite.update')
+Route.post('/updatess/:id', 'SpeakerController.update').as('Speakers.update')
+
+//consulter les reseautsages
+Route.get('/reseaux','ReseauController.index')

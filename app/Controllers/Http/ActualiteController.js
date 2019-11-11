@@ -2,6 +2,7 @@
 
 const Actualite = use('App/Models/Actualite');
 const Helpers = use('Helpers')
+
 class ActualiteController {
 
     //ShowActualite({view}){
@@ -21,28 +22,23 @@ class ActualiteController {
 
     async store({request, response, view, session}) {
 
-        const photo = request.file('photo', {
-            types: ['image'],
-            size: '2mb'
-          })
-
-          if (!photo.moved()) {
-            return photo.error()
-          }
-
-          await photo.move(Helpers.tmpPath('uploads/photo'), {
-            name:`${uuid()}.${logo.subtype}` ,
-            overwrite: true
-          })
-        
         const actualite = new Actualite();
         
         actualite.title = request.input('title');
         actualite.article = request.input('article');
-        actualite.photo = 'uploads/photo/${logo.filename}';
-        await actualite.save();
-       
+        
 
+        //process upload
+        const photo = request.file('photo')
+        
+        actualite.photo = new Date().getTime() +'.'+photo.subtype
+
+        await photo.move(Helpers.publicPath('uploads/images'),{
+        name : actualite.photo
+        }),
+
+        actualite.save();
+       
         session.flash({ notification: 'Successfully create!' });
         return response.route('Actualite.article')
     }
@@ -51,17 +47,20 @@ class ActualiteController {
         const id = params.id;
         const actualite = await Actualite.find(id);
 
-        return view.render('edits', {actualite : Actualite})
+        return view.render('edits', {actualite : actualite})
     }
 
     async update({request, response, view, params, session}) {
         const id = params.id;
-        const actualite = await Actualite.find(id);
-        actualite.name = request.input('title'),
+        const actualite = new Actualite();
+        
+        actualite.title = request.input('title');
+        actualite.article = request.input('article');
+         
         await actualite.save();
-
-        session.flash({ notification: 'Successfully update!' });
-        response.redirect('/article')
+       
+        session.flash({ notification: 'Successfully create!' });
+        return response.route('/article')
     }
 
     async delete({request, response, view, params, session}) {

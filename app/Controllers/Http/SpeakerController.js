@@ -1,9 +1,11 @@
 'use strict'
 
-
+const Helpers = use ('Helpers')
 const Speaker = use('App/Models/Speaker');
-class SpeakerController {
-     async index({view, request, response}) {
+
+class SpeakerController {   
+
+    async index({view, request, response}) {
         const speakers = await Speaker.all();
           
         //Fetch all user's thematiques
@@ -12,35 +14,46 @@ class SpeakerController {
     create({request, response, view}) {
         return view.render('speakers')
     }
-
+    
+        
     async store({request, response, view, session}) {
-        const speakers = new Speaker();
-        //const posted = await auth.user.thematiques().create({
-            //name: thematique.name,            
-        //});
 
-        speakers.name = request.input('nom');
-        speakers.fonction = request.input('fonction');
-        speakers.photo = request.input('photo');
-        await speakers.save();
-        //return response.json(speaker);
+        
+        const speaker = new Speaker();
+        
+        speaker.name = request.input('nom');
+        speaker.fonction = request.input('fonction');
+        speaker.biographie = request.input('msg');
 
+        //process upload
+        const photo = request.file('photo')
+        
+        speaker.photo = new Date().getTime()+'.'+photo.subtype
+
+        await photo.move(Helpers.publicPath('uploads/images'),{
+        name : speaker.photo
+        }),
+        await speaker.save();
+       
         session.flash({ notification: 'Successfully create!' });
-        return response.route('speakers')
+        return response.route('Speaker.speaker')
     }
+
 
     async edit({request, response, view, params}) {
         const id = params.id;
         const speaker = await Speaker.find(id);
 
-        return view.render('edit', {speaker : speaker})
+        return view.render('editss', {speaker : speaker})
     }
 
     async update({request, response, view, params, session}) {
         const id = params.id;
-        const thematique = await Thematique.find(id);
-        thematique.name = request.input('name'),
-        await thematique.save();
+        const speaker = await Speaker.find(id);
+        speaker.name = request.input('nom'),
+        speaker.fonction = request.input('fonction'),
+        speaker.biographie = request.input('msg'),
+        await speaker.save();
 
         session.flash({ notification: 'Successfully update!' });
         response.redirect('/speakers')
@@ -48,8 +61,8 @@ class SpeakerController {
 
     async delete({request, response, view, params, session}) {
         const id = params.id;
-        const thematique = await Thematique.find(id);
-        await thematique.delete();
+        const speaker = await Speaker.find(id);
+        await speaker.delete();
 
         session.flash({ notification: 'Successfully delete!' });
         response.redirect('/speakers')
