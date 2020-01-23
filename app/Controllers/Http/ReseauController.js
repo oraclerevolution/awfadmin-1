@@ -6,7 +6,7 @@ class ReseauController {
         const reseaus = await Reseau.all();
           
         //Fetch all user's thematiques
-        return view.render('reseaux',{ reseaus: reseauss.rows})
+        return view.render('reseaux',{ reseaus: reseaus.rows})
     }
 }
 

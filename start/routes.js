@@ -18,22 +18,25 @@ const Route = use('Route')
 
 //Route.get('login', 'Auth/LoginController.login').as('login')
 
-Route.get('home', 'TestController.home').as('home')
+Route.get('/home', 'TestController.home')
 //Route.get('article', 'ActualiteController.ShowActualite')
-Route.get('/allreseaux', 'ReseauController.showForm')
-//Route.get('thematique', 'ThematiqueController.ShowThematique').as('thematique')
-//Route.post('/thematique', 'ThematiqueController.create')
-
-//Route.get('speakers', 'SpeakerController.ShowSpeakers')
+Route.get('/allreseaux', 'ReseauController.showForm').as('home')
 
 Route.post('logout', 'Auth/LogoutController.logout').as('logout')
 
-Route.get('/', 'Auth/LoginController.showLogin')
-Route.post('login', 'Auth/LoginController.login').validator('LoginAdmin')
+Route.get('/', 'Auth/LoginController.showLogin').as('login')
+Route.post('/login', 'Auth/LoginController.login').as('loginUser')
+
 
 Route.resource('speakers', 'SpeakerController').except(['index, show']).validator(new Map ([
     [['Speakers.store'],['storeSpeaker']]
 ]))
+
+/**Enregistrement */
+Route.get('registerUser', 'Auth/LoginController.showRegister')
+Route.post('registerUser', 'Auth/LoginController.create').as('registerUser')
+
+
 
 //ajout thematique
 /*
